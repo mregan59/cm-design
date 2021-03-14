@@ -12,6 +12,10 @@
         "main": "Account Screen Here",
         "back": "Back"
     },
+    "questionScreen": {
+        "header": "Quiz!",
+        "back": "Back"
+    },
     "errors": {
         "invalidEmail": "Invalid email address."
     }

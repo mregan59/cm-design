@@ -1,44 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+// This is the first file that ReactNative will run when it starts up.
+//
+// We jump out of here immediately and into our main entry point instead.
+//
+// It is possible to have React Native load our main module first, but we'd have to
+// change that in both AppDelegate.m and MainApplication.java.  This would have the
+// side effect of breaking other tooling like mobile-center and react-native-rename.
+//
+// It's easier just to leave it here.
+import App from "./src/app"
+import { AppRegistry } from "react-native"
 
-import * as eva from '@eva-design/eva';
-import customTheme from './src/theme/dark-theme.json'; // <-- Import app theme
-
-import { Loading } from './src/loading';
-import customMapping from './src/theme/custom-mapping.json';
-
-//NAVIGATORS
-import { AppNavigator } from './src/navigation/app.navigator';
-import { MainBottomNavigator } from './src/navigation/main-bottom.navigator';
-import { MainTopNavigator } from './src/navigation/main-top.navigator';
-import { AppRoute } from './src/navigation/app-routes';
-
-const theme = { ...eva.dark, ...customTheme };
-
-
-export default function App(props) {
-    const [initialRoute, setInitialRoute] = useState(AppRoute.HOME);
-
-    return (
-        <>
-            <IconRegistry icons={EvaIconsPack} />
-            <ApplicationProvider
-                {...eva}
-                theme={theme}
-            >
-                <SafeAreaProvider>
-                    {initialRoute ? (
-                        <NavigationContainer>
-                            <AppNavigator />
-                        </NavigationContainer>
-                    ) : (
-                        <Loading></Loading>
-                    )}
-                </SafeAreaProvider>
-            </ApplicationProvider>
-        </>
-    );
-}
+AppRegistry.registerComponent("IgniteTrivia", () => App)
+export default App

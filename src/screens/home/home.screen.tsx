@@ -9,17 +9,16 @@ import { MainLayout } from '../../layout';
 import { AppRoute } from '../../navigation/app-routes';
 import { SettingsIcon, PersonIcon } from '../../assets/icons';
 import { FlexBox, Spacer, Text } from '../../components';
+import { NavigatorScreenParams, useNavigation } from "@react-navigation/native"
+import { StackNavigationProp } from '@react-navigation/stack';
 
-export const Home = props => {
-    const { eva } = props;
+
+export const Home = ({ eva, navigation }) => {
     const themedStyle = eva.style;
 
-
-
     const navigateToSettings = () => {
-        props.navigation.navigate(AppRoute.SETTINGS);
+        navigation.navigate(AppRoute.SETTINGS);
     }
-
 
     return (
         <View style={themedStyle.container}>
@@ -27,7 +26,6 @@ export const Home = props => {
                 safeArea={true}
                 tabPadding
                 showTitle={true}
-                {...props}
             >
                 <Layout level="1" style={themedStyle.container}>
                     <FlexBox row aligncenter justifybetween>

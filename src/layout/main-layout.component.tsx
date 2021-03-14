@@ -17,9 +17,11 @@ import {
 } from '../navigation/safe-area-layout';
 import { variables } from '../theme/variables';
 import { BackIcon } from '../assets/icons';
+import { useRoute } from '@react-navigation/native';
 
 export const MainLayout = props => {
     const statusBarHeight = getStatusBarHeight();
+    const route = useRoute();
     const navigateBack = () => {
         if (props.onBack) {
             props.onBack()
@@ -44,7 +46,7 @@ export const MainLayout = props => {
         return (
             <React.Fragment>
                 <TopNavigation
-                    title={props.showTitle && (props.title || props.route.name)}
+                    title={props.showTitle && (props.title || route.name)}
                     alignment="center"
                     accessoryLeft={(props.showBack && (() => <BackButton />)) || (props.leftControl ? props.leftControl : null)}
                     accessoryRight={props.rightControl ? props.rightControl : null}
